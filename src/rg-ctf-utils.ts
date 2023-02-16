@@ -105,7 +105,7 @@ export default class RGCTFUtils {
   }
 
   /**
-   * Creates a new instance of the CTF utilities, attached to a bot
+   * Creates a new instance of the CTF utilities, attached to an RGBot
    * @param {RGBot} bot The bot to use when calling these utilities
    */
   constructor(bot: RGBot) {
