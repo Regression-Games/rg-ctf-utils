@@ -321,7 +321,7 @@ export default class RGCTFUtils {
    *     - Args:
    *        - position: Vec3 - The location of the now-available flag
    *   - "flagScored"
-   *     - Description: Triggered when a flag is scored in a base.
+   *     - Description: Triggered when a flag is captured at a team's base.
    *     - Args:
    *        - teamName: string - The name of the team that scored the flag
    *   - "itemDetected"
