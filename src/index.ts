@@ -1,6 +1,3 @@
-import RGCTFUtils from "./rg-ctf-utils";
+import RGCTFUtils from './rg-ctf-utils';
 
-export {
-    RGCTFUtils as default,
-    RGCTFUtils
-};
+export { RGCTFUtils as default, RGCTFUtils };
