@@ -32,11 +32,35 @@ both teammates and enemies.</p></dd>
 
 
 * [RGCTFUtils](#RGCTFUtils)
+    * [new RGCTFUtils(bot)](#new_RGCTFUtils_new)
+    * [.setDebug(debug)](#RGCTFUtils+setDebug)
     * [.getFlagLocation()](#RGCTFUtils+getFlagLocation) ⇒ <code>Vec3</code> \| <code>null</code>
     * [.approachFlag()](#RGCTFUtils+approachFlag) ⇒ <code>Promise.&lt;boolean&gt;</code>
     * [.scoreFlag()](#RGCTFUtils+scoreFlag) ⇒ <code>Promise.&lt;boolean&gt;</code>
     * [.hasFlag()](#RGCTFUtils+hasFlag) ⇒ <code>boolean</code>
     * [.on(event, func)](#RGCTFUtils+on)
+
+
+<br><a name="new_RGCTFUtils_new"></a>
+
+### new RGCTFUtils(bot)
+> <p>Creates a new instance of the CTF utilities, attached to a bot</p>
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| bot | <code>RGBot</code> | <p>The bot to use when calling these utilities</p> |
+
+
+<br><a name="RGCTFUtils+setDebug"></a>
+
+### rgctfUtils.setDebug(debug)
+> <p>Sets the debug state of this plugin - true if you want to see debug statements, false otherwise</p>
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| debug | <code>boolean</code> | <p>Whether or not to print debug statements</p> |
 
 
 <br><a name="RGCTFUtils+getFlagLocation"></a>
@@ -54,9 +78,11 @@ if (flagLocation) await bot.approachPosition(flagLocation);
 <br><a name="RGCTFUtils+approachFlag"></a>
 
 ### rgctfUtils.approachFlag() ⇒ <code>Promise.&lt;boolean&gt;</code>
-> <p>Commands the bot to move toward the flag location, if the flag exists.</p>
+> <p>Commands the bot to move toward the current flag location, if the flag exists. This will not follow
+> the flag, but will simply move the bot to the location of the flag when this command is called.</p>
 
-**Returns**: <code>Promise.&lt;boolean&gt;</code> - <p>true if the bot reached the flag, false otherwise</p>  
+**Returns**: <code>Promise.&lt;boolean&gt;</code> - <p>true if the bot reached the location, false otherwise</p>  
+**See{getflaglocation}**:   
 **Example**  
 ```js
 await bot.approachFlag();
@@ -70,8 +96,8 @@ await bot.approachFlag();
 **Returns**: <code>Promise.&lt;boolean&gt;</code> - <p>true if the bot reached the scoring zone, and false otherwise</p>  
 **Example**  
 ```js
-if (ctfUtils.hasFlag()) {
-    await ctfUtils.scoreFlag();
+if (rgctfUtils.hasFlag()) {
+    await rgctfUtils.scoreFlag();
 }
 ```
 
@@ -83,8 +109,8 @@ if (ctfUtils.hasFlag()) {
 **Returns**: <code>boolean</code> - <p>true if the bot has the flag, false otherwise</p>  
 **Example**  
 ```js
-if (ctfUtils.hasFlag()) {
-    await ctfUtils.scoreFlag();
+if (rgctfUtils.hasFlag()) {
+    await rgctfUtils.scoreFlag();
 }
 ```
 
@@ -158,36 +184,36 @@ if (ctfUtils.hasFlag()) {
 
 **Example**  
 ```js
-ctfUtils.on('flagObtained', async (playerUsername: string) => {
+rgctfUtils.on('flagObtained', async (playerUsername: string) => {
     // If I was the one to obtain the flag, go and score!
     if (playerUsername == bot.username()) {
-        await ctfUtils.scoreFlag();
+        await rgctfUtils.scoreFlag();
     }
 });
 ```
 **Example**  
 ```js
-ctfUtils.on('flagScored', async (team: string) => {
+rgctfUtils.on('flagScored', async (team: string) => {
     // After scoring, print a message
     bot.chat(`Flag scored by ${team} team, waiting until it respawns`)
 })
 ```
 **Example**  
 ```js
-ctfUtils.on('flagAvailable', async (position: Vec3) => {
+rgctfUtils.on('flagAvailable', async (position: Vec3) => {
     bot.chat("Flag is available, going to get it")
-    await ctfUtils.approachFlag();
+    await rgctfUtils.approachFlag();
 })
 ```
 **Example**  
 ```js
-ctfUtils.on('itemDetected', (item: Item) => {
+rgctfUtils.on('itemDetected', (item: Item) => {
     bot.chat(`I see that a ${item.name} has spawned`)
 })
 ```
 **Example**  
 ```js
-ctfUtils.on('itemCollected', (collector: Entity, item: Item) => {
+rgctfUtils.on('itemCollected', (collector: Entity, item: Item) => {
     bot.chat(`I see that ${collector.username} picked up ${item.name}`)
 })
 ```

@@ -25,41 +25,49 @@ export default class RGCTFUtils {
    * Name / identifier of the flag that spawns at the center of the map
    * @type {string}
    * @public
+   * @readonly
    */
-  public FLAG_ITEM_NAME = 'white_banner';
+  public readonly FLAG_ITEM_NAME = 'white_banner';
 
   /**
    * A shorthand identifier for any banner (i.e. blue_banner, red_banner, etc...)
    * @type {string}
    * @public
+   * @readonly
    */
-  public FLAG_DROP_NAME = 'banner';
+  public readonly FLAG_DROP_NAME = 'banner';
 
   /**
    * The center location of the scoring zone for blue team bots
    * @type {Vec3}
    * @public
+   * @readonly
    */
-  public BLUE_SCORE_LOCATION: Vec3 = new Vec3(160, 63, -386);
+  public readonly BLUE_SCORE_LOCATION: Vec3 = new Vec3(160, 63, -386);
 
   /**
    * The center location of the scoring zone for red team bots
+   * @type {Vec3}
+   * @public
+   * @readonly
    */
-  public RED_SCORE_LOCATION = new Vec3(160, 63, -386);
+  public readonly RED_SCORE_LOCATION = new Vec3(160, 63, -386);
 
   /**
    * The location of the neutral flag spawn
    * @type {Vec3}
    * @public
+   * @readonly
    */
-  public FLAG_SPAWN: Vec3 = new Vec3(96, 63, -386);
+  public readonly FLAG_SPAWN: Vec3 = new Vec3(96, 63, -386);
 
   /**
    * The list of events that can be listened to
    * @type {string[]}
    * @public
+   * @readonly
    */
-  public CTF_EVENTS: string[] = [
+  public readonly CTF_EVENTS: string[] = [
     'flagObtained',
     'flagAvailable',
     'flagScored',
@@ -77,15 +85,15 @@ export default class RGCTFUtils {
   /**
    * A boolean to control whether debug statements for the library are printed to the console. Defaults to false.
    * @type {boolean}
-   * @public
+   * @private
    */
-  public debug = false;
+  private debug = false;
 
   /**
    * Private function for logging debug statements. Enable via the publicly accessible
    * debug flag.
    * @see{debug}
-   * @param message The message to log
+   * @param {string} message The message to log
    * @example
    * this.debugLog("This is some debug message")
    * @private
@@ -96,6 +104,10 @@ export default class RGCTFUtils {
     }
   }
 
+  /**
+   * Creates a new instance of the CTF utilities, attached to a bot
+   * @param {RGBot} bot The bot to use when calling these utilities
+   */
   constructor(bot: RGBot) {
     this.bot = bot;
     this.eventEmitter = new EventEmitter();
@@ -171,9 +183,9 @@ export default class RGCTFUtils {
 
     /**
      * When the score is updated, detect if the flag was scored via flag captures change
-     * TODO: This does not always fire immediately, so sometimes there is a lag between
-     *       when a player scores/picks up the flag, and when it sees that it did. We should
-     *       make sure to use real entity pick up events to detect this later.
+     * TODO(REG-708): This does not always fire immediately, so sometimes there is a lag between
+     *                when a player scores/picks up the flag, and when it sees that it did. We should
+     *                make sure to use real entity pick up events to detect this later.
      */
     bot.on('score_update', (matchInfo: RGMatchInfo) => {
       this.debugLog(`Score updated triggered`);
@@ -208,6 +220,14 @@ export default class RGCTFUtils {
   }
 
   /**
+   * Sets the debug state of this plugin - true if you want to see debug statements, false otherwise
+   * @param {boolean} debug Whether or not to print debug statements
+   */
+  setDebug(debug: boolean) {
+    this.debug = debug;
+  }
+
+  /**
    * Gets the location of either the neutral flag OR a team's flag on the ground.
    * @example
    * const flagLocation = ctfutils.getFlagLocation();
@@ -231,10 +251,12 @@ export default class RGCTFUtils {
   }
 
   /**
-   * Commands the bot to move toward the flag location, if the flag exists.
+   * Commands the bot to move toward the current flag location, if the flag exists. This will not follow
+   * the flag, but will simply move the bot to the location of the flag when this command is called.
+   * @see{getFlagLocation}
    * @example
    * await bot.approachFlag();
-   * @returns {Promise<boolean>} true if the bot reached the flag, false otherwise
+   * @returns {Promise<boolean>} true if the bot reached the location, false otherwise
    */
   async approachFlag(): Promise<boolean> {
     const flagLocation = this.getFlagLocation();
@@ -247,8 +269,8 @@ export default class RGCTFUtils {
   /**
    * Commands the bot to score the flag in your team's base.
    * @example
-   * if (ctfUtils.hasFlag()) {
-   *     await ctfUtils.scoreFlag();
+   * if (rgctfUtils.hasFlag()) {
+   *     await rgctfUtils.scoreFlag();
    * }
    * @returns {Promise<boolean>} true if the bot reached the scoring zone, and false otherwise
    */
@@ -270,8 +292,8 @@ export default class RGCTFUtils {
   /**
    * Returns true if this bot has the flag, and false otherwise.
    * @example
-   * if (ctfUtils.hasFlag()) {
-   *     await ctfUtils.scoreFlag();
+   * if (rgctfUtils.hasFlag()) {
+   *     await rgctfUtils.scoreFlag();
    * }
    * @returns {boolean} true if the bot has the flag, false otherwise
    */
@@ -315,28 +337,28 @@ export default class RGCTFUtils {
    *        - collector: Entity - The entity that collected the item
    *        - item: Item - The item that was collected
    * @example
-   * ctfUtils.on('flagObtained', async (playerUsername: string) => {
+   * rgctfUtils.on('flagObtained', async (playerUsername: string) => {
    *     // If I was the one to obtain the flag, go and score!
    *     if (playerUsername == bot.username()) {
-   *         await ctfUtils.scoreFlag();
+   *         await rgctfUtils.scoreFlag();
    *     }
    * });
    * @example
-   * ctfUtils.on('flagScored', async (team: string) => {
+   * rgctfUtils.on('flagScored', async (team: string) => {
    *     // After scoring, print a message
    *     bot.chat(`Flag scored by ${team} team, waiting until it respawns`)
    * })
    * @example
-   * ctfUtils.on('flagAvailable', async (position: Vec3) => {
+   * rgctfUtils.on('flagAvailable', async (position: Vec3) => {
    *     bot.chat("Flag is available, going to get it")
-   *     await ctfUtils.approachFlag();
+   *     await rgctfUtils.approachFlag();
    * })
    * @example
-   * ctfUtils.on('itemDetected', (item: Item) => {
+   * rgctfUtils.on('itemDetected', (item: Item) => {
    *     bot.chat(`I see that a ${item.name} has spawned`)
    * })
    * @example
-   * ctfUtils.on('itemCollected', (collector: Entity, item: Item) => {
+   * rgctfUtils.on('itemCollected', (collector: Entity, item: Item) => {
    *     bot.chat(`I see that ${collector.username} picked up ${item.name}`)
    * })
    * @param {string} event The event (must be on of the events in CTF_EVENTS
