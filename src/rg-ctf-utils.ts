@@ -323,7 +323,7 @@ export default class RGCTFUtils {
    *   - "flagScored"
    *     - Description: Triggered when a flag is captured at a team's base.
    *     - Args:
-   *        - teamName: string - The name of the team that scored the flag
+   *        - teamName: string - The name of the team that captured the flag
    *   - "itemDetected"
    *      - Description: Triggered when an item is detected, either by being dropped or spawned. Includes the item
    *                     reference for simplicity, and the entity reference for more advanced use cases.
