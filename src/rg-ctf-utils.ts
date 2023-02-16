@@ -223,6 +223,8 @@ export default class RGCTFUtils {
       flagPosition = this.bot.findItemOnGround(this.FLAG_DROP_NAME, {
         maxDistance: 100,
         partialMatch: true,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
       })?.position;
     }
     return flagPosition;
