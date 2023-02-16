@@ -1,6 +1,6 @@
 # rg-ctf-utils
 
-[INSERT NPM LINK HERE]
+[![NPM](https://img.shields.io/npm/v/rg-ctf-utils.svg)](https://www.npmjs.com/package/rg-ctf-utils)
 
 A collection of utilities for use in the Regression Games Capture the Flag game mode.
 
