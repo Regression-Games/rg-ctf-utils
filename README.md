@@ -1,3 +1,9 @@
+# rg-ctf-utils
+
+[INSERT NPM LINK HERE]
+
+A collection of utilities for use in the Regression Games Capture the Flag game mode.
+
 ## Classes
 
 <dl>
@@ -194,3 +200,5 @@ ctfUtils.on('itemCollected', (collector: Entity, item: Item) => {
 | --- | --- | --- |
 | ...args | <code>\*</code> | <p>The arguments that the callback will take</p> |
 
+
+&copy; 2023 Regression Games, Inc.

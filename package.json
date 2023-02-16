@@ -14,7 +14,7 @@
     "prepublishOnly": "tsc",
     "lint": "eslint src/**/*.ts",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "docs": "jsdoc2md src/*.ts --configure docs/jsdoc.json --plugin dmd-readable > docs/api.md",
+    "docs": "jsdoc2md src/*.ts --configure jsdoc.json --plugin dmd-readable --template README.hbs > README.md",
     "prepare": "husky install"
   },
   "author": "Regression Games, Inc",
