@@ -100,7 +100,7 @@ export default class RGCTFUtils {
    */
   private debugLog(message: string) {
     if (this.debug) {
-      console.log(`[CTF Utils] ${message}`);
+      console.debug(`[CTF Utils] ${message}`);
     }
   }
 
