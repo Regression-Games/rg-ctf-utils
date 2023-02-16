@@ -200,6 +200,8 @@ class RGCTFUtils {
             flagPosition = (_b = this.bot.findItemOnGround(this.FLAG_DROP_NAME, {
                 maxDistance: 100,
                 partialMatch: true,
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
             })) === null || _b === void 0 ? void 0 : _b.position;
         }
         return flagPosition;
