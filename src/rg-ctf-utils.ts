@@ -9,7 +9,7 @@ import pathfinder from 'mineflayer-pathfinder';
 const { GoalNear } = pathfinder.goals;
 
 /**
- * A collection of utilities for the Capture the Flag game mode
+ * A collection of utilities for the Capture the Flag game mode.
  * Includes location of points of interest, simplified functions
  * for gathering and scoring the flag, and utilities for finding
  * both teammates and enemies.
