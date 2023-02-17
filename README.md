@@ -7,29 +7,39 @@ A collection of utilities for use in the Regression Games Capture the Flag game 
 ## Classes
 
 <dl>
+<dt><a href="#CTFEvent">CTFEvent</a></dt>
+<dd><p>A set of event names that are emitted by the RGCTFUtils class, which
+can be registered on an RGBot. See each CTFEvent type and examples
+to see how to use them!</p></dd>
 <dt><a href="#RGCTFUtils">RGCTFUtils</a></dt>
+<dd></dd>
+</dl>
+
+## Members
+
+<dl>
+<dt><a href="#CTFEvent">CTFEvent</a></dt>
 <dd><p>A collection of utilities for the Capture the Flag game mode
 Includes location of points of interest, simplified functions
 for gathering and scoring the flag, and utilities for finding
-both teammates and enemies.</p></dd>
+both teammates and enemies.</p>
+<p>When using this class, it will register a set of listeners on RGBot,
+which helps with reacting to CTF game mode events. See the examples
+within the <code>on</code> documentation for more information.</p></dd>
 </dl>
 
-## Typedefs
 
-<dl>
-<dt><a href="#EventCallback">EventCallback</a> ⇒ <code>void</code></dt>
-<dd></dd>
-</dl>
+<br><a name="CTFEvent"></a>
+
+## CTFEvent
+> <p>A set of event names that are emitted by the RGCTFUtils class, which
+> can be registered on an RGBot. See each CTFEvent type and examples
+> to see how to use them!</p>
 
 
 <br><a name="RGCTFUtils"></a>
 
 ## RGCTFUtils
-> <p>A collection of utilities for the Capture the Flag game mode
-> Includes location of points of interest, simplified functions
-> for gathering and scoring the flag, and utilities for finding
-> both teammates and enemies.</p>
-
 
 * [RGCTFUtils](#RGCTFUtils)
     * [new RGCTFUtils(bot)](#new_RGCTFUtils_new)
@@ -38,7 +48,6 @@ both teammates and enemies.</p></dd>
     * [.approachFlag()](#RGCTFUtils+approachFlag) ⇒ <code>Promise.&lt;boolean&gt;</code>
     * [.scoreFlag()](#RGCTFUtils+scoreFlag) ⇒ <code>Promise.&lt;boolean&gt;</code>
     * [.hasFlag()](#RGCTFUtils+hasFlag) ⇒ <code>boolean</code>
-    * [.on(event, func)](#RGCTFUtils+on)
 
 
 <br><a name="new_RGCTFUtils_new"></a>
@@ -51,6 +60,10 @@ both teammates and enemies.</p></dd>
 | --- | --- | --- |
 | bot | <code>RGBot</code> | <p>The bot to use when calling these utilities</p> |
 
+**Example**  
+```js
+const rgctfUtils = new RGCTFUtils(bot);
+```
 
 <br><a name="RGCTFUtils+setDebug"></a>
 
@@ -114,117 +127,16 @@ if (rgctfUtils.hasFlag()) {
 }
 ```
 
-<br><a name="RGCTFUtils+on"></a>
+<br><a name="CTFEvent"></a>
 
-### rgctfUtils.on(event, func)
-> <p>Registers a callback to listen for a particular CTF event. Possible events are:</p>
-> <ul>
-> <li>&quot;flagObtained&quot;
-> <ul>
-> <li>Description: Triggered when a flag is obtained by any player. Provides the player username that collected the
-> flag</li>
-> <li>Args:
-> <ul>
-> <li>collector: string - The entity that collected the flag</li>
-> </ul>
-> </li>
-> </ul>
-> </li>
-> <li>&quot;flagAvailable&quot;
-> <ul>
-> <li>Description: Triggered when the flag becomes available to pick up, either by being dropped or spawned.</li>
-> <li>Args:
-> <ul>
-> <li>position: Vec3 - The location of the now-available flag</li>
-> </ul>
-> </li>
-> </ul>
-> </li>
-> <li>&quot;flagScored&quot;
-> <ul>
-> <li>Description: Triggered when a flag is scored in a base.</li>
-> <li>Args:
-> <ul>
-> <li>teamName: string - The name of the team that scored the flag</li>
-> </ul>
-> </li>
-> </ul>
-> </li>
-> <li>&quot;itemDetected&quot;
-> <ul>
-> <li>Description: Triggered when an item is detected, either by being dropped or spawned. Includes the item
-> reference for simplicity, and the entity reference for more advanced use cases.</li>
-> <li>Args:
-> <ul>
-> <li>item: Item - The Item object that has been spawned or dropped</li>
-> <li>entity: Entity - The Entity object that has been spawned or dropped (useful for getting position and other
-> information.</li>
-> </ul>
-> </li>
-> </ul>
-> </li>
-> <li>&quot;itemCollected&quot;
-> <ul>
-> <li>Description: Triggered when an item is collected by any player.</li>
-> <li>Args:
-> <ul>
-> <li>collector: Entity - The entity that collected the item</li>
-> <li>item: Item - The item that was collected</li>
-> </ul>
-> </li>
-> </ul>
-> </li>
-> </ul>
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| event | <code>string</code> | <p>The event (must be on of the events in CTF_EVENTS</p> |
-| func | [<code>EventCallback</code>](#EventCallback) | <p>A callback with the appropriate arguments for the given event</p> |
-
-**Example**  
-```js
-rgctfUtils.on('flagObtained', async (playerUsername: string) => {
-    // If I was the one to obtain the flag, go and score!
-    if (playerUsername == bot.username()) {
-        await rgctfUtils.scoreFlag();
-    }
-});
-```
-**Example**  
-```js
-rgctfUtils.on('flagScored', async (team: string) => {
-    // After scoring, print a message
-    bot.chat(`Flag scored by ${team} team, waiting until it respawns`)
-})
-```
-**Example**  
-```js
-rgctfUtils.on('flagAvailable', async (position: Vec3) => {
-    bot.chat("Flag is available, going to get it")
-    await rgctfUtils.approachFlag();
-})
-```
-**Example**  
-```js
-rgctfUtils.on('itemDetected', (item: Item) => {
-    bot.chat(`I see that a ${item.name} has spawned`)
-})
-```
-**Example**  
-```js
-rgctfUtils.on('itemCollected', (collector: Entity, item: Item) => {
-    bot.chat(`I see that ${collector.username} picked up ${item.name}`)
-})
-```
-
-<br><a name="EventCallback"></a>
-
-## EventCallback ⇒ <code>void</code>
-
-| Param | Type | Description |
-| --- | --- | --- |
-| ...args | <code>\*</code> | <p>The arguments that the callback will take</p> |
+## CTFEvent
+> <p>A collection of utilities for the Capture the Flag game mode
+> Includes location of points of interest, simplified functions
+> for gathering and scoring the flag, and utilities for finding
+> both teammates and enemies.</p>
+> <p>When using this class, it will register a set of listeners on RGBot,
+> which helps with reacting to CTF game mode events. See the examples
+> within the <code>on</code> documentation for more information.</p>
 
 
 &copy; 2023 Regression Games, Inc.
