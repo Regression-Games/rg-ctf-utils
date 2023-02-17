@@ -99,7 +99,7 @@ export class CTFEvent {
 }
 
 /**
- * A collection of utilities for the Capture the Flag game mode
+ * A collection of utilities for the Capture the Flag game mode.
  * Includes location of points of interest, simplified functions
  * for gathering and scoring the flag, and utilities for finding
  * both teammates and enemies.
@@ -177,12 +177,12 @@ export default class RGCTFUtils {
    */
   private logDebug(message: string) {
     if (this.debug) {
-      console.log(`[CTF Utils] ${message}`);
+      console.debug(`[CTF Utils] ${message}`);
     }
   }
 
   /**
-   * Creates a new instance of the CTF utilities, attached to a bot
+   * Creates a new instance of the CTF utilities, attached to an RGBot
    * @example
    * const rgctfUtils = new RGCTFUtils(bot);
    * @param {RGBot} bot The bot to use when calling these utilities

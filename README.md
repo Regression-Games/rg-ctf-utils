@@ -19,7 +19,7 @@ to see how to use them!</p></dd>
 
 <dl>
 <dt><a href="#CTFEvent">CTFEvent</a></dt>
-<dd><p>A collection of utilities for the Capture the Flag game mode
+<dd><p>A collection of utilities for the Capture the Flag game mode.
 Includes location of points of interest, simplified functions
 for gathering and scoring the flag, and utilities for finding
 both teammates and enemies.</p>
@@ -53,7 +53,7 @@ within the <code>on</code> documentation for more information.</p></dd>
 <br><a name="new_RGCTFUtils_new"></a>
 
 ### new RGCTFUtils(bot)
-> <p>Creates a new instance of the CTF utilities, attached to a bot</p>
+> <p>Creates a new instance of the CTF utilities, attached to an RGBot</p>
 
 
 | Param | Type | Description |
@@ -130,7 +130,7 @@ if (rgctfUtils.hasFlag()) {
 <br><a name="CTFEvent"></a>
 
 ## CTFEvent
-> <p>A collection of utilities for the Capture the Flag game mode
+> <p>A collection of utilities for the Capture the Flag game mode.
 > Includes location of points of interest, simplified functions
 > for gathering and scoring the flag, and utilities for finding
 > both teammates and enemies.</p>
