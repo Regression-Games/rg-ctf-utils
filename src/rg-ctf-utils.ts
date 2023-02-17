@@ -149,7 +149,7 @@ export default class RGCTFUtils {
    * @public
    * @readonly
    */
-  public readonly FLAG_SPAWN: Vec3 = new Vec3(96, 64, -386);
+  public readonly FLAG_SPAWN: Vec3 = new Vec3(96, 63, -386);
 
   /**
    * The last match info, used to determine if a flag pickup or capture has happened
