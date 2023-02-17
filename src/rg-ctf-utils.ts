@@ -9,8 +9,7 @@ const { GoalNear } = pathfinder.goals;
 
 /**
  * A set of event names that are emitted by the RGCTFUtils class, which
- * can be registered on an RGBot. See each CTFEvent type and examples
- * to see how to use them!
+ * can be registered on an RGBot.
  */
 export class CTFEvent {
   /**
@@ -106,7 +105,7 @@ export class CTFEvent {
  *
  * When using this class, it will register a set of listeners on RGBot,
  * which helps with reacting to CTF game mode events. See the examples
- * within the `on` documentation for more information.
+ * within the `CTFEvent` documentation for more information.
  */
 export default class RGCTFUtils {
   // A reference to the bot using these utilities

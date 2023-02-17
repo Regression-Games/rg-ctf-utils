@@ -9,8 +9,7 @@ A collection of utilities for use in the Regression Games Capture the Flag game 
 <dl>
 <dt><a href="#CTFEvent">CTFEvent</a></dt>
 <dd><p>A set of event names that are emitted by the RGCTFUtils class, which
-can be registered on an RGBot. See each CTFEvent type and examples
-to see how to use them!</p></dd>
+can be registered on an RGBot.</p></dd>
 <dt><a href="#RGCTFUtils">RGCTFUtils</a></dt>
 <dd></dd>
 </dl>
@@ -25,7 +24,7 @@ for gathering and scoring the flag, and utilities for finding
 both teammates and enemies.</p>
 <p>When using this class, it will register a set of listeners on RGBot,
 which helps with reacting to CTF game mode events. See the examples
-within the <code>on</code> documentation for more information.</p></dd>
+within the <code>CTFEvent</code> documentation for more information.</p></dd>
 </dl>
 
 
@@ -33,8 +32,7 @@ within the <code>on</code> documentation for more information.</p></dd>
 
 ## CTFEvent
 > <p>A set of event names that are emitted by the RGCTFUtils class, which
-> can be registered on an RGBot. See each CTFEvent type and examples
-> to see how to use them!</p>
+> can be registered on an RGBot.</p>
 
 
 <br><a name="RGCTFUtils"></a>
@@ -136,7 +134,7 @@ if (rgctfUtils.hasFlag()) {
 > both teammates and enemies.</p>
 > <p>When using this class, it will register a set of listeners on RGBot,
 > which helps with reacting to CTF game mode events. See the examples
-> within the <code>on</code> documentation for more information.</p>
+> within the <code>CTFEvent</code> documentation for more information.</p>
 
 
 &copy; 2023 Regression Games, Inc.
