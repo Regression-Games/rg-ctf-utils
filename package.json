@@ -1,6 +1,6 @@
 {
   "name": "rg-ctf-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Utilities for the Regression Games Capture the Flag game mode",
   "main": "build/index.js",
   "types": "src/",
