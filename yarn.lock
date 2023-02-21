@@ -3520,10 +3520,10 @@ reusify@^1.0.4:
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
 
-rg-bot@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/rg-bot/-/rg-bot-1.5.0.tgz#21fba0670d398285a751cbf2107164e9efb0667e"
-  integrity sha512-+QCYDFp8FsRPDuj2CMYxhYC5HBpcIQ5rFb6ZIX8IaxXDcOJNZwiH/uvzulIwxPV8HVSwj/L8M9UXgImk39HaRQ==
+rg-bot@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/rg-bot/-/rg-bot-1.6.0.tgz#0b9ab5fe482b41f09a511bd9462a7d2504224fa2"
+  integrity sha512-Wz8LXpMuEy3s3AM+hBKomOmN6qqeFlM1K4efocrnuvmBQw7T9fN8YyQZJr1/8AYelej58zpdj1w8zA+bBTDzwQ==
   dependencies:
     "@types/node" "^18.0.6"
     minecraft-data "^3.17.0"
