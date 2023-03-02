@@ -298,19 +298,65 @@ export default class RGCTFUtils {
    * @returns {Vec3 | null} The location of either the neutral flag OR a team's flag on the ground.
    */
   getFlagLocation(): Vec3 | null {
-    let flagPosition = this.bot.findBlock(this.NEUTRAL_FLAG_NAME, {
-      maxDistance: 100,
-      partialMatch: false,
-    })?.position;
+    console.log(`Looking for flag at center`);
+    // when search for the neutral flag, we know it will only be in the middle right now
+    // if this fact changes this lib will need updates
+    let flagPosition = this.bot
+      .findBlocks({
+        blockNames: [this.NEUTRAL_FLAG_NAME],
+        maxDistance: 3,
+        partialMatch: false,
+        originPoint: this.FLAG_SPAWN,
+        blockValueFunction: (blockName = '') => {
+          return 0;
+        },
+        sortValueFunction: (distance = 0, pointValue = 0, digTime = 0) => {
+          return 0;
+        },
+      })
+      .shift()?.result?.position;
     if (!flagPosition) {
-      flagPosition = this.bot.findItemOnGround(this.FLAG_SUFFIX, {
-        maxDistance: 100,
-        partialMatch: true,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-      })?.position;
+      console.log(`Looking for flag on ground 65`);
+      // when searching on ground, it is fastest to search 2 different times, once on each 1/2 of the arena in order to
+      // evaluate the fewest blocks possible to find the flag
+      // arena is 124 long by 54 wide... 124/2 = 62/2 = 31  , 54/2 = 27 , so we pick the 2 midpoints and search 31 blocks out
+      flagPosition = this.bot
+        .findItemsOnGround({
+          itemNames: [this.FLAG_SUFFIX],
+          maxDistance: 31,
+          partialMatch: true,
+          originPoint: new Vec3(65, 62, -386),
+          itemValueFunction: (itemName = '') => {
+            return 0;
+          },
+          sortValueFunction: (distance = 0, pointValue = 0) => {
+            return 0;
+          },
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+        })
+        .shift()?.result?.position;
+      if (!flagPosition) {
+        console.log(`Looking for flag on ground 127`);
+        flagPosition = this.bot
+          .findItemsOnGround({
+            itemNames: [this.FLAG_SUFFIX],
+            maxDistance: 31,
+            partialMatch: true,
+            originPoint: new Vec3(127, 62, -386),
+            itemValueFunction: (itemName = '') => {
+              return 0;
+            },
+            sortValueFunction: (distance = 0, pointValue = 0) => {
+              return 0;
+            },
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+          })
+          .shift()?.result?.position;
+      }
     }
-    return flagPosition;
+    return flagPosition || null;
   }
 
   /**
