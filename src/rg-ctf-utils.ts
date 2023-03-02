@@ -214,6 +214,11 @@ export default class RGCTFUtils {
       const item = bot.getItemDefinitionById(
         (collected.metadata[8] as any).itemId
       );
+      this.logDebug(
+        `Player ${collector.username} collected: ${
+          item.name
+        } at: ${bot.vecToString(collected.position)}`
+      );
       this.bot.emit(CTFEvent.ITEM_COLLECTED, collector, item);
     });
 
@@ -225,8 +230,11 @@ export default class RGCTFUtils {
       const itemId = (entity.metadata[8] as any)?.itemId;
       if (itemId) {
         const item = bot.getItemDefinitionById(itemId);
+        this.logDebug(
+          `Item dropped: ${item.name} at: ${bot.vecToString(entity.position)}`
+        );
         if (item.name.includes(this.FLAG_SUFFIX)) {
-          this.bot.emit(CTFEvent.FLAG_AVAILABLE, item);
+          this.bot.emit(CTFEvent.FLAG_AVAILABLE, entity.position);
         }
         this.bot.emit(CTFEvent.ITEM_DETECTED, item, entity);
       }
@@ -240,6 +248,9 @@ export default class RGCTFUtils {
       const itemId = (entity.metadata[8] as any)?.itemId;
       if (itemId) {
         const item = bot.getItemDefinitionById(itemId);
+        this.logDebug(
+          `Item spawned: ${item.name} at: ${bot.vecToString(entity.position)}`
+        );
         if (item.name.includes(this.FLAG_SUFFIX)) {
           this.bot.emit(CTFEvent.FLAG_AVAILABLE, entity.position);
         }
@@ -298,9 +309,6 @@ export default class RGCTFUtils {
    * @returns {Vec3 | null} The location of either the neutral flag OR a team's flag on the ground.
    */
   getFlagLocation(): Vec3 | null {
-    console.log(`Looking for flag at center`);
-    // when search for the neutral flag, we know it will only be in the middle right now
-    // if this fact changes this lib will need updates
     const centerFlag = this.bot.mineflayer().blockAt(this.FLAG_SPAWN, false);
     let flagPosition =
       (centerFlag &&
@@ -308,45 +316,23 @@ export default class RGCTFUtils {
         this.FLAG_SPAWN) ||
       null;
     if (!flagPosition) {
-      console.log(`Looking for flag on ground 65`);
-      // when searching on ground, it is fastest to search 2 different times, once on each 1/2 of the arena in order to
-      // evaluate the fewest blocks possible to find the flag
-      // arena is 124 long by 54 wide... 124/2 = 62/2 = 31  , 54/2 = 27 , so we pick the 2 midpoints and search 31 blocks out
       flagPosition = this.bot
         .findItemsOnGround({
           itemNames: [this.FLAG_SUFFIX],
-          maxDistance: 31,
+          // the bot can only 'see' 30+/-1 blocks in any direction anyway;
+          // this is because bot.mineflayer.entities only populates that far out
+          maxDistance: 32,
           partialMatch: true,
-          originPoint: new Vec3(65, 62, -386),
           itemValueFunction: (itemName = '') => {
             return 0;
           },
           sortValueFunction: (distance = 0, pointValue = 0) => {
             return 0;
           },
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
         })
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         .shift()?.result?.position;
-      if (!flagPosition) {
-        console.log(`Looking for flag on ground 127`);
-        flagPosition = this.bot
-          .findItemsOnGround({
-            itemNames: [this.FLAG_SUFFIX],
-            maxDistance: 31,
-            partialMatch: true,
-            originPoint: new Vec3(127, 62, -386),
-            itemValueFunction: (itemName = '') => {
-              return 0;
-            },
-            sortValueFunction: (distance = 0, pointValue = 0) => {
-              return 0;
-            },
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-          })
-          .shift()?.result?.position;
-      }
     }
     return flagPosition || null;
   }
