@@ -2821,7 +2821,7 @@ minecraft-data@3.17.0:
   resolved "https://registry.yarnpkg.com/minecraft-data/-/minecraft-data-3.17.0.tgz#07019e1ceaf97b9a336d180bd7f9179ce95f8c41"
   integrity sha512-XYPy9vV3om6466o9U5rvtoSHyZIrTJwipieSAMWGRQ54f/DqE6k7thxRHisIalcpsVKMlT6wqSVFE0TTsUF3Bg==
 
-minecraft-data@^3.0.0, minecraft-data@^3.17.0, minecraft-data@^3.21.0, minecraft-data@^3.26.0, minecraft-data@^3.5.1:
+minecraft-data@^3.0.0, minecraft-data@^3.21.0, minecraft-data@^3.5.1:
   version "3.27.0"
   resolved "https://registry.yarnpkg.com/minecraft-data/-/minecraft-data-3.27.0.tgz#4cd90ebc121b30d0dca7e6d36d31c31d1d2d2479"
   integrity sha512-Hc0RnPr2pZItI/OK9gi5oKQQaXLfTGhHms4celUkuaNyHTgWolCCc1Bg5AxpIyymoM/xhBvIhMA6au42R17Ajw==
@@ -2860,47 +2860,10 @@ minecraft-protocol@^1.36.0:
     uuid-1345 "^1.0.1"
     yggdrasil "^1.4.0"
 
-minecraft-protocol@^1.40.3:
-  version "1.40.3"
-  resolved "https://registry.yarnpkg.com/minecraft-protocol/-/minecraft-protocol-1.40.3.tgz#aad3e4e8d50eeecd2e90d1e4e97634938b2196c7"
-  integrity sha512-+6WTrQcqBRXYST8Ha2V30XZ2zcooXA8fBNgKvIHVE/AkWs1kDjiwH1gdhPlK17JMLnV+yYSH4PACsk5VAOuqPA==
-  dependencies:
-    "@types/readable-stream" "^2.3.13"
-    aes-js "^3.1.2"
-    buffer-equal "^1.0.0"
-    debug "^4.3.2"
-    endian-toggle "^0.0.0"
-    lodash.get "^4.1.2"
-    lodash.merge "^4.3.0"
-    minecraft-data "^3.21.0"
-    minecraft-folder-path "^1.2.0"
-    node-fetch "^2.6.1"
-    node-rsa "^0.4.2"
-    prismarine-auth "^2.2.0"
-    prismarine-nbt "^2.0.0"
-    prismarine-realms "^1.2.0"
-    protodef "^1.8.0"
-    readable-stream "^4.1.0"
-    uuid-1345 "^1.0.1"
-    yggdrasil "^1.4.0"
-
 mineflayer-pathfinder@2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/mineflayer-pathfinder/-/mineflayer-pathfinder-2.4.0.tgz#950376c862f5f88ae732ac76539a5bcc82a00567"
   integrity sha512-KCfOdxHXaJF2GHY4L+MDO5qBTi7RaQNdmbQjEg24f7kmStie07AfZFgjMg/qfmuYVESv1gSWg2C2iVDFGO0ibg==
-  dependencies:
-    minecraft-data "^3.5.1"
-    prismarine-block "^1.16.3"
-    prismarine-entity "^2.1.1"
-    prismarine-item "^1.11.5"
-    prismarine-nbt "^2.2.1"
-    prismarine-physics "^1.5.2"
-    vec3 "^0.1.7"
-
-mineflayer-pathfinder@^2.4.0:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/mineflayer-pathfinder/-/mineflayer-pathfinder-2.4.2.tgz#d76d356568d242627115594b4a28e0b5dad6113e"
-  integrity sha512-Aoy4l5/QNtIggozL1/q1/vZUjckAtsOumcyNjAQd/Ea5hRgoW+Rr2yedrL6noUHfP50Gjo7Ms2nLuzEJL16GRA==
   dependencies:
     minecraft-data "^3.5.1"
     prismarine-block "^1.16.3"
@@ -2917,29 +2880,6 @@ mineflayer@4.5.1:
   dependencies:
     minecraft-data "^3.15.2"
     minecraft-protocol "^1.36.0"
-    prismarine-biome "^1.1.1"
-    prismarine-block "^1.13.1"
-    prismarine-chat "^1.7.1"
-    prismarine-chunk "^1.32.0"
-    prismarine-entity "^2.2.0"
-    prismarine-item "^1.12.1"
-    prismarine-nbt "^2.0.0"
-    prismarine-physics "^1.3.1"
-    prismarine-recipe "^1.3.0"
-    prismarine-registry "^1.5.0"
-    prismarine-windows "^2.5.0"
-    prismarine-world "^3.6.0"
-    protodef "^1.14.0"
-    typed-emitter "^1.0.0"
-    vec3 "^0.1.7"
-
-mineflayer@^4.5.1:
-  version "4.8.1"
-  resolved "https://registry.yarnpkg.com/mineflayer/-/mineflayer-4.8.1.tgz#65535e0a6e41a08a075ce85279be6cedc2cdf108"
-  integrity sha512-xqt5gdBvYHO1UV2slBm1QFFI2dHyfoMAxwSgxIGOuobIrZ05pY56XV6GW+NWQK0gqS4+MA5n0VakXPWZ5trzBQ==
-  dependencies:
-    minecraft-data "^3.26.0"
-    minecraft-protocol "^1.40.3"
     prismarine-biome "^1.1.1"
     prismarine-block "^1.13.1"
     prismarine-chat "^1.7.1"
@@ -3328,7 +3268,7 @@ prismarine-item@^1.10.0, prismarine-item@^1.10.1, prismarine-item@^1.11.2, prism
     prismarine-nbt "^2.0.0"
     prismarine-registry "^1.4.0"
 
-prismarine-nbt@^2.0.0, prismarine-nbt@^2.2.1:
+prismarine-nbt@2.2.1, prismarine-nbt@^2.0.0, prismarine-nbt@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/prismarine-nbt/-/prismarine-nbt-2.2.1.tgz#a263e08b36fd27a682024549a8823d82f9ad30d9"
   integrity sha512-Mb50c58CPnuZ+qvM31DBa08tf9UumlTq1LkvpMoUpKfCuN05GZHTqCUwER3lxTSHLL0GZKghIPbYR/JQkINijQ==
@@ -3365,7 +3305,7 @@ prismarine-registry@^1.1.0, prismarine-registry@^1.4.0, prismarine-registry@^1.5
     minecraft-data "^3.0.0"
     prismarine-nbt "^2.0.0"
 
-prismarine-viewer@^1.23.0:
+prismarine-viewer@1.23.0:
   version "1.23.0"
   resolved "https://registry.yarnpkg.com/prismarine-viewer/-/prismarine-viewer-1.23.0.tgz#60ca83dc352469ad95d740100a436ff4833c9e12"
   integrity sha512-r45yc924ry5j4C0ZS87BFZ0KiuIwHGqVxiocZdBTTYbO22ewAn/ub/a1HsVbJ+/+7/xtWJ5r9dfvYMxweHGCAQ==
@@ -3608,24 +3548,24 @@ reusify@^1.0.4:
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
 
-rg-bot@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/rg-bot/-/rg-bot-1.6.0.tgz#0b9ab5fe482b41f09a511bd9462a7d2504224fa2"
-  integrity sha512-Wz8LXpMuEy3s3AM+hBKomOmN6qqeFlM1K4efocrnuvmBQw7T9fN8YyQZJr1/8AYelej58zpdj1w8zA+bBTDzwQ==
+rg-bot@1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/rg-bot/-/rg-bot-1.8.0.tgz#ce50c24d1cdb516773c1977fca66554a4f139ea3"
+  integrity sha512-e/8aQKHYGVBUc5rPfxbIQPefFcr+vv3YIjFRDin1ttAhFvwnYf/aBbyQuiotc9jqesC32N/4ZbVWLm3UUYppAQ==
   dependencies:
     "@types/node" "^18.0.6"
-    minecraft-data "^3.17.0"
-    mineflayer "^4.5.1"
-    mineflayer-pathfinder "^2.4.0"
+    minecraft-data "3.17.0"
+    mineflayer "4.5.1"
+    mineflayer-pathfinder "2.4.0"
     node-fetch "^3.2.6"
-    prismarine-entity "^2.1.1"
-    prismarine-item "^1.11.5"
-    prismarine-nbt "^2.2.1"
-    prismarine-viewer "^1.23.0"
-    rg-match-info "^1.0.0"
-    vec3 "^0.1.7"
+    prismarine-entity "2.1.1"
+    prismarine-item "1.11.5"
+    prismarine-nbt "2.2.1"
+    prismarine-viewer "1.23.0"
+    rg-match-info "1.1.0"
+    vec3 "0.1.7"
 
-rg-match-info@1.1.0, rg-match-info@^1.0.0:
+rg-match-info@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/rg-match-info/-/rg-match-info-1.1.0.tgz#c915b029bd3e71da34ef7e4d73fbe910e59aabb1"
   integrity sha512-59YQedZZGjTKpqGcW5c/Vc5t7roRN5gcJhlAOvEknSx27WtxgFj9HxdTkGgtp0uqKl/b/YF34fqdNStudJoXQA==
