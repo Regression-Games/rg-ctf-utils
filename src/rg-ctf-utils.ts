@@ -301,20 +301,8 @@ export default class RGCTFUtils {
     console.log(`Looking for flag at center`);
     // when search for the neutral flag, we know it will only be in the middle right now
     // if this fact changes this lib will need updates
-    let flagPosition = this.bot
-      .findBlocks({
-        blockNames: [this.NEUTRAL_FLAG_NAME],
-        maxDistance: 3,
-        partialMatch: false,
-        originPoint: this.FLAG_SPAWN,
-        blockValueFunction: (blockName = '') => {
-          return 0;
-        },
-        sortValueFunction: (distance = 0, pointValue = 0, digTime = 0) => {
-          return 0;
-        },
-      })
-      .shift()?.result?.position;
+    const centerFlag = this.bot.mineflayer().blockAt(this.FLAG_SPAWN, false);
+    let flagPosition = (centerFlag && this.FLAG_SPAWN) || null;
     if (!flagPosition) {
       console.log(`Looking for flag on ground 65`);
       // when searching on ground, it is fastest to search 2 different times, once on each 1/2 of the arena in order to
