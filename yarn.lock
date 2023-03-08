@@ -1116,10 +1116,15 @@
   resolved "https://registry.yarnpkg.com/@types/mdurl/-/mdurl-1.0.2.tgz#e2ce9d83a613bacf284c7be7d491945e39e1f8e9"
   integrity sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==
 
-"@types/node@*", "@types/node@>=10.0.0", "@types/node@^18.0.6":
+"@types/node@*", "@types/node@>=10.0.0":
   version "18.13.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.13.0.tgz#0400d1e6ce87e9d3032c19eb6c58205b0d3f7850"
   integrity sha512-gC3TazRzGoOnoKAhUx+Q0t8S9Tzs74z7m0ipwGpSqQrleP14hKxP4/JUeEQcD3W1/aIpnWl8pHowI7WokuZpXg==
+
+"@types/node@18.0.6":
+  version "18.0.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.6.tgz#0ba49ac517ad69abe7a1508bc9b3a5483df9d5d7"
+  integrity sha512-/xUq6H2aQm261exT6iZTMifUySEt4GR5KX8eYyY+C4MSNPqSh9oNIP7tz2GLKTlFaiBbgZNxffoR3CVRG+cljw==
 
 "@types/readable-stream@^2.3.13":
   version "2.3.15"
@@ -2988,14 +2993,7 @@ node-domexception@^1.0.0:
   resolved "https://registry.yarnpkg.com/node-domexception/-/node-domexception-1.0.0.tgz#6888db46a1f71c0b76b3f7555016b63fe64766e5"
   integrity sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==
 
-node-fetch@^2.6.1:
-  version "2.6.9"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.9.tgz#7c7f744b5cc6eb5fd404e0c7a9fec630a55657e6"
-  integrity sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==
-  dependencies:
-    whatwg-url "^5.0.0"
-
-node-fetch@^3.2.6:
+node-fetch@3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-3.3.0.tgz#37e71db4ecc257057af828d523a7243d651d91e4"
   integrity sha512-BKwRP/O0UvoMKp7GNdwPlObhYGB5DQqwhEDQlNKuoqwVYSxkSZCSbHjnFFmUEtwSKRPU4kNK8PbDYYitwaE3QA==
@@ -3003,6 +3001,13 @@ node-fetch@^3.2.6:
     data-uri-to-buffer "^4.0.0"
     fetch-blob "^3.1.4"
     formdata-polyfill "^4.0.10"
+
+node-fetch@^2.6.1:
+  version "2.6.9"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.9.tgz#7c7f744b5cc6eb5fd404e0c7a9fec630a55657e6"
+  integrity sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==
+  dependencies:
+    whatwg-url "^5.0.0"
 
 node-releases@^2.0.8:
   version "2.0.10"
@@ -3195,7 +3200,7 @@ prismarine-biome@^1.1.0, prismarine-biome@^1.1.1, prismarine-biome@^1.2.0:
   resolved "https://registry.yarnpkg.com/prismarine-biome/-/prismarine-biome-1.3.0.tgz#53b122fc7c3968f43f1639e823e7bd1b829fab46"
   integrity sha512-GY6nZxq93mTErT7jD7jt8YS1aPrOakbJHh39seYsJFXvueIOdHAmW16kYQVrTVMW5MlWLQVxV/EquRwOgr4MnQ==
 
-prismarine-block@^1.13.1, prismarine-block@^1.14.1, prismarine-block@^1.16.3, prismarine-block@^1.7.3:
+prismarine-block@1.16.3, prismarine-block@^1.13.1, prismarine-block@^1.14.1, prismarine-block@^1.16.3, prismarine-block@^1.7.3:
   version "1.16.3"
   resolved "https://registry.yarnpkg.com/prismarine-block/-/prismarine-block-1.16.3.tgz#465b6b0154be16f8d7b5dc892f4a4153f073d542"
   integrity sha512-E9OazjIqnEgcXM6me6EIeQFMcNRWZzsaftWtetRSIKVoW+4UKWleb6lTNKh9kq7wNxciKavcYBmKL3sF7HfSaA==
@@ -3323,7 +3328,7 @@ prismarine-viewer@1.23.0:
     three.meshline "^1.3.0"
     vec3 "^0.1.7"
 
-prismarine-windows@^2.5.0:
+prismarine-windows@2.6.1, prismarine-windows@^2.5.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/prismarine-windows/-/prismarine-windows-2.6.1.tgz#f0e1331eb3d61ad8a5e57a3e61adcd13489bf2e0"
   integrity sha512-5B8+W4Zb9MWaakd38I/WW564zEgat6bC23ftcv15yVYmHZTq8mtUfX2GsOUD3Pu/aFKarvXpyyJahFMUTUVoXg==
@@ -3548,20 +3553,22 @@ reusify@^1.0.4:
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
 
-rg-bot@1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/rg-bot/-/rg-bot-1.9.0.tgz#b1be0cd85828f3dbca8a1ddd4644464e19136556"
-  integrity sha512-eCq1XGWjHcEv5eGXXMw0NJmBH4Fjp7lr78HtTb1LJRP4aFxcDNfieZNRh7LGVRyyaa9caAQIEcfjtiErdWfwHQ==
+rg-bot@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/rg-bot/-/rg-bot-1.10.0.tgz#d9e4aac8eabd052ba7445a27096a4a9f56821bb6"
+  integrity sha512-BuuBOWL6hPLUA6qrMnbAMnGFCfXUKuBvT6xz6a+VlRtnut34VjElOPs4pqSXdYuGPH/PW64YiJS+5NoWq15q8A==
   dependencies:
-    "@types/node" "^18.0.6"
+    "@types/node" "18.0.6"
     minecraft-data "3.17.0"
     mineflayer "4.5.1"
     mineflayer-pathfinder "2.4.0"
-    node-fetch "^3.2.6"
+    node-fetch "3.3.0"
+    prismarine-block "1.16.3"
     prismarine-entity "2.1.1"
     prismarine-item "1.11.5"
     prismarine-nbt "2.2.1"
     prismarine-viewer "1.23.0"
+    prismarine-windows "2.6.1"
     rg-match-info "1.1.0"
     vec3 "0.1.7"
 
