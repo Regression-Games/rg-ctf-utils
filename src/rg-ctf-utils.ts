@@ -214,12 +214,14 @@ export default class RGCTFUtils {
       const item = bot.getItemDefinitionById(
         (collected.metadata[8] as any).itemId
       );
-      this.logDebug(
-        `Player ${collector.username} collected: ${
-          item.name
-        } at: ${bot.vecToString(collected.position)}`
-      );
-      this.bot.emit(CTFEvent.ITEM_COLLECTED, collector, item);
+      if (item) {
+        this.logDebug(
+          `Player ${collector.username} collected: ${
+            item.name
+          } at: ${bot.vecToString(collected.position)}`
+        );
+        this.bot.emit(CTFEvent.ITEM_COLLECTED, collector, item);
+      }
     });
 
     /**
